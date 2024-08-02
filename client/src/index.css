@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Itim&family=Pangolin&family=Sofia&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.app {
+  @apply grid min-h-screen;
+  grid-template-rows: auto 1fr auto;
+}
+
+.main {
+  @apply grid min-h-screen;
+  grid-template-rows: 1fr auto;
+}
+
+.navLink.active {
+  @apply text-green-500;
+}
+
+.menuLink.active {
+  @apply text-white bg-green-600 rounded-lg;
+}
