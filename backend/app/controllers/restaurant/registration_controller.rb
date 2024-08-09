@@ -26,11 +26,6 @@ class Restaurant::RegistrationController < ApplicationController
   end
 
   def restaurant_params
-    params.require(:restaurant).permit(:name, :email, :password, :password_confirmation, :address, :state, :country)
-  end
-
-  def update_params
-    params.require(:restaurant).permit(:name, :location, :address, :state, :country, :phone_no, :description,
-                                       opening_times: %i[days times])
+    params.require(:restaurant).permit(:name, :email, :password, :password_confirmation, :phone_no, :address, :state, :country)
   end
 end
