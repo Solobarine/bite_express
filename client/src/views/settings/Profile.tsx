@@ -1,13 +1,32 @@
 import Head from "../../components/Head";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencilAlt } from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from "react-redux";
+import { RootState } from "../../features/store";
+import { useFormik } from "formik";
 
 const Profile = () => {
+  const { data } = useSelector((state: RootState) => state.auth.user);
+
+  const { values, handleChange } = useFormik({
+    initialValues: {
+      first_name: data?.first_name,
+      last_name: data?.last_name,
+      email: data?.email,
+      gender: data?.gender,
+      nationality: data?.nationality,
+      date_of_birth: data?.date_of_birth,
+    },
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
+  console.log(data, values);
   return (
     <div className="p-2 grid gap-3">
       <Head title={"Profile"} />
-      <div className="grid gap-4">
-        <div className="relative w-fit mx-auto sm:mx-0 mb-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="relative w-fit mx-auto sm:mx-0 mb-5 sm:col-span-2">
           <img
             src="#"
             alt=""
@@ -19,24 +38,32 @@ const Profile = () => {
         </div>
         <input
           type="text"
-          name="firstName"
+          name="first_name"
+          onChange={handleChange}
+          value={values.first_name}
           className="text-sm p-2 rounded-lg outline-green-500 border border-green-500 shadow-md bg-white dark:bg-zinc-700"
           placeholder="Enter First Name"
         />
         <input
           type="text"
-          name="lastName"
+          name="last_name"
+          onChange={handleChange}
+          value={values.last_name}
           className="text-sm p-2 rounded-lg outline-green-500 border border-green-500 shadow-md bg-white dark:bg-zinc-700"
           placeholder="Enter Last Name"
         />
         <input
           type="date"
-          name="dateOfBirth"
+          name="date_of_birth"
+          onChange={handleChange}
+          value={values.date_of_birth}
           className="text-sm p-2 rounded-lg outline-green-500 border border-green-500 shadow-md bg-white dark:bg-zinc-700"
         />
         <select
-          name="sex"
-          id="sex"
+          name="gender"
+          id="gender"
+          onChange={handleChange}
+          value={values.gender}
           className="text-sm p-2 rounded-lg outline-green-500 border border-green-500 shadow-md bg-white dark:bg-zinc-700"
         >
           <option value="male">Male</option>
@@ -45,24 +72,29 @@ const Profile = () => {
         <input
           type="text"
           name="email"
+          onChange={handleChange}
+          value={values.email}
           className="text-sm p-2 rounded-lg outline-green-500 border border-green-500 shadow-md bg-white dark:bg-zinc-700"
           placeholder="Enter Email"
         />
         <input
           type="text"
           name="phoneNo"
+          onChange={handleChange}
           className="text-sm p-2 rounded-lg outline-green-500 border border-green-500 shadow-md bg-white dark:bg-zinc-700"
           placeholder="e.g +222 000 000 0000"
         />
         <select
-          name="country"
+          name="nationality"
+          onChange={handleChange}
+          value={values.nationality}
           className="text-sm p-2 rounded-lg outline-green-500 border border-green-500 shadow-md bg-white dark:bg-zinc-700"
         >
-          <option value="">Select Country</option>
+          <option value="">Select Nationality</option>
         </select>
         <button
           type="submit"
-          className="py-3 rounded-full text-white bg-green-500"
+          className="py-3 rounded-full text-white bg-green-500 col-start-1"
         >
           Update
         </button>

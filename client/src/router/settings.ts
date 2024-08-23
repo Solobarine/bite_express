@@ -1,3 +1,4 @@
+import Addresses from "../views/settings/Addresses";
 import HelpCenter from "../views/settings/HelpCenter";
 import Settings from "../views/settings/Index";
 import Notifications from "../views/settings/Notifications";
@@ -23,6 +24,10 @@ const settingsRoutes = [
   {
     Component: HelpCenter,
     path: "settings/help-center/contact-us",
+  },
+  {
+    Component: Addresses,
+    path: "settings/addresses",
   },
 ];
 

@@ -1,7 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import { settingsMenuOptions } from "../../data";
 import Link from "./Link";
+import { useSelector } from "react-redux";
+import { RootState } from "../../features/store";
 
 const Menu = () => {
+  const { data } = useSelector((state: RootState) => state.auth.user);
+
+  const navigate = useNavigate();
   return (
     <section className="p-2">
       <div className="flex items-center gap-2 justify-between">
@@ -12,11 +18,13 @@ const Menu = () => {
             className="w-12 aspect-square rounded-full bg-gray-200 shadow-md"
           />
           <div className="p-1">
-            <p className="font-semibold">Authur Morgan</p>
-            <p className="text-sm mt-1">authur@mail.com</p>
+            <p className="font-semibold">
+              {data?.first_name} {data?.last_name}
+            </p>
+            <p className="text-sm mt-1">{data?.email}</p>
           </div>
         </div>
-        <button>
+        <button onClick={() => navigate("/settings/profile")}>
           <i className="bx bxs-edit-alt" />
         </button>
       </div>

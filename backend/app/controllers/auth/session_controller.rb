@@ -14,7 +14,7 @@ class Auth::SessionController < ApplicationController
       token = JWT.encode(payload, ENV['APP_SECRET_KEY'])
       render json: { message: 'Logged in successfully', token: }, status: :ok
     else
-      render json: { message: 'Invalid Email or Password', user: }, status: :unprocessable_entity
+      render json: { message: 'Invalid Email or Password', user: }, status: :unauthorized
     end
   end
 

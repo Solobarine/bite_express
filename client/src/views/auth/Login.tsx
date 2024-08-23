@@ -1,75 +1,60 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
-import SocialAuth from "../../components/SocialAuth";
-
-const LoginSchema = Yup.object().shape({
-  email: Yup.string()
-    .email("Enter a Valid Email")
-    .required("Email is Required"),
-  password: Yup.string()
-    .min(8, "Minimum of 8 Characters")
-    .max(20, "Maximum of 20 Characters")
-    .required("Password is Required"),
-});
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../features/store";
+import { toggleIsLogin } from "../../features/slices/general";
+import { useLocation, useNavigate } from "react-router-dom";
+import Restaurant from "../../components/auth/sessions/Restaurant";
+import User from "../../components/auth/sessions/User";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { pathname, search } = useLocation();
+  const searchParams = new URLSearchParams(search);
+  const type = searchParams.get("type");
+
+  const { isLogin } = useSelector((state: RootState) => state.general);
+  const dispatch: AppDispatch = useDispatch();
+
   return (
-    <div className="p-3 sm:p-10">
-      <div className="border-2 rounded-xl border-gray-200 dark:border-gray-300 p-5 max-w-md shadow-lg">
-        <div className="grid place-content-center gap-2 my-4">
-          <img src="/logo1.png" alt="" className="w-20 mx-auto" />
-          <h2 className="text-center text-3xl font-semibold">Welcome Back</h2>
-        </div>
-        <Formik
-          initialValues={{
-            email: "",
-            password: "",
-          }}
-          validationSchema={LoginSchema}
-          onSubmit={(values) => console.log(values)}
-        >
-          {({ isSubmitting }) => (
-            <Form className="grid gap-3">
-              <div className="grid gap-1">
-                <label htmlFor="email">Email</label>
-                <Field
-                  type="email"
-                  name="email"
-                  placeholder="Enter Your Email"
-                  className="rounded-lg p-2 border border-gray-300 outline-gray-300 dark:bg-slate-600 dark:outline-gray-600 dark:border-gray-600"
-                />
-                <ErrorMessage
-                  name="email"
-                  component="div"
-                  className="text-red-500 text-sm"
-                />
-              </div>
-              <div className="grid gap-1">
-                <label htmlFor="password">Password</label>
-                <Field
-                  name="password"
-                  type="password"
-                  placeholder="Enter Your Password"
-                  className="rounded-lg p-2 border border-gray-300 outline-gray-300 dark:bg-slate-600 dark:outline-gray-600 dark:border-gray-600"
-                />
-                <ErrorMessage
-                  name="password"
-                  component="div"
-                  className="text-red-500 text-sm"
-                />
-              </div>
+    isLogin && (
+      <>
+        <div className="fixed top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 grid grid-cols-1 md:grid-cols-2 z-40 w-[90%] max-w-screen-lg rounded-xl shadow-lg bg-gray-200 dark:bg-zinc-800">
+          <div className="hidden md:block m-4">
+            <div className="w-full h-full bg-[url('/two-roasted-fried-chicken-legs.jpg')] rounded-lg"></div>
+          </div>
+          <div className="p-6">
+            <button
+              className="font-semibold text-3xl block w-fit ml-auto mb-2"
+              onClick={() => dispatch(toggleIsLogin(false))}
+            >
+              &times;
+            </button>
+            <span className="max-w-lg p-2 flex items-center gap-3">
               <button
-                type="submit"
-                className="px-4 py-1 bg-green-500 text-white rounded-lg shadow-sm"
+                className="py-2 grow 5 shadow-md border rounded-lg text-white bg-green-700"
+                onClick={() => navigate("/")}
               >
-                {isSubmitting ? "Please Wait" : "Login"}
+                Login as User
               </button>
-            </Form>
-          )}
-        </Formik>
-        <SocialAuth />
-      </div>
-    </div>
+              <button
+                className="py-2 grow 5 shadow-md border rounded-lg text-white bg-orange-500"
+                onClick={() => navigate("/?type=restaurant")}
+              >
+                Login as Restaurant
+              </button>
+            </span>
+            {pathname === "/" && type === "restaurant" ? (
+              <Restaurant />
+            ) : (
+              <User />
+            )}
+          </div>
+        </div>
+        <div
+          id="overlay"
+          className={`fixed inset-0 bg-gray-700/50 z-30 backdrop-blur-sm`}
+        />
+      </>
+    )
   );
 };
 

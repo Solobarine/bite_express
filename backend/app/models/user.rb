@@ -7,15 +7,24 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true
   validates :gender, presence: true, on: :update
   validates :date_of_birth, presence: true, on: :update
-  validates :must_be_at_least_16, on: :update
-  validates :state, presence: true, length: { minimum: 2, maximum: 100 }, on: :update
-  validates :state, presence: true, length: { minimum: 2, maximum: 50 }, on: :update
+  validates :nationality, presence: true, length: { minimum: 2, maximum: 50 }, on: :update
 
   has_secure_password
 
+  enum role: {
+    user: 'user',
+    admin: 'admin'
+  }
+
   # Associations
+  has_many :addresses
   has_many :reviews
-  has_many :likes
+  has_many :orders
+  has_many :likes, as: :likeable, dependent: :destroy
+
+  def is_admin?
+    role === 'admin'
+  end
 
   private
 

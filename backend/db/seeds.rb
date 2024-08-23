@@ -7,3 +7,8 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+#
+load 'db/seeds/users.rb'
+load 'db/seeds/categories.rb'
+load 'db/seeds/restaurants.rb'
+load 'db/seeds/reviews.rb'

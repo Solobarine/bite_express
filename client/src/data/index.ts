@@ -2,7 +2,12 @@ export const settingsMenuOptions = [
   {
     iconName: "bx-calendar",
     title: "My Favourite Meals",
-    link: "/meals/favourite",
+    link: "/meals/favourites",
+  },
+  {
+    iconName: "bx-calendar",
+    title: "My Favourite Restaurants",
+    link: "/restaurants/favourites",
   },
   {
     iconName: "bxs-offer",
@@ -22,7 +27,7 @@ export const settingsMenuOptions = [
   {
     iconName: "bx-current-location",
     title: "Addresses",
-    link: "/settings/address",
+    link: "/settings/addresses",
   },
   {
     iconName: "bx-bell",
@@ -204,4 +209,43 @@ export const orderCancellationReasons = [
   "Wrong Address",
   "Unreasonale Prices",
   "I just want to cancel",
+];
+
+export const bestDishes = [
+  {
+    dish: "Burger and Fries",
+    description:
+      "Juicy, perfectly grilled beef patty topped with melted cheese, fresh lettuce, and ripe tomatoes, all nestled between a toasted bun.",
+    image: "/fav_meals/burger.jpg",
+  },
+  {
+    dish: "Sushi",
+    description:
+      "Delicate and fresh sushi rolls crafted with premium fish, seasoned rice, and crisp vegetables, all wrapped in a seaweed sheet.",
+    image: "/fav_meals/sushi.avif",
+  },
+  {
+    dish: "Ravioli",
+    description:
+      "Tender pasta pockets filled with a rich, savory blend of cheese and herbs, lightly dressed in a velvety tomato sauce.",
+    image: "/fav_meals/ravioli.avif",
+  },
+  {
+    dish: "Jollof Rice",
+    description:
+      "A vibrant and flavorful West African rice dish simmered in a blend of tomatoes, peppers, and spices.",
+    image: "/fav_meals/jollof-rice.jpg",
+  },
+  {
+    dish: "Chicken Tandoori",
+    description:
+      "Marinated chicken pieces infused with a blend of aromatic spices and yogurt, then roasted to perfection in a tandoor.",
+    image: "/fav_meals/chicken-tandoori.jpg",
+  },
+  {
+    dish: "Veggie Salad with Egg",
+    description:
+      "A refreshing and nutritious salad featuring crisp mixed greens, colorful vegetables, and slices of hard-boiled egg.",
+    image: "/fav_meals/salad.jpg",
+  },
 ];

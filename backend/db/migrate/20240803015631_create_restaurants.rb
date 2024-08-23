@@ -10,7 +10,7 @@ class CreateRestaurants < ActiveRecord::Migration[7.1]
       t.string :address
       t.string :state
       t.string :country
-      t.text :opening_times
+      t.text :opening_hours
       t.timestamps
     end
   end
