@@ -21,6 +21,7 @@ const authThunks = {
     "USER_LOGIN",
     async (payload: { user: { email: string; password: string } }) => {
       const url = `${ROOT_URL}/auth/session/create`;
+      console.log(url);
       return postRequest(url, payload);
     }
   ),

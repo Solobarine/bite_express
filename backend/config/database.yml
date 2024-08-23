@@ -23,8 +23,8 @@ default: &default
 development:
   <<: *default
   database: bite_express_development
-  username: solly
-  password: postgres
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
@@ -59,8 +59,8 @@ development:
 test:
   <<: *default
   database: bite_express_test
-  username: solly
-  password: postgres
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
