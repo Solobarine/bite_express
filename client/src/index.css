@@ -6,7 +6,8 @@
 
 .app {
   @apply grid min-h-screen;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: 1fr auto;
+  overflow: hidden;
 }
 
 .main {
@@ -20,4 +21,30 @@
 
 .menuLink.active {
   @apply text-white bg-green-600 rounded-lg;
+}
+
+.mealGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15em, 20em));
+}
+
+/* Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.Toastify__toast-theme--light {
+  @apply bg-gray-700 text-white text-sm font-semibold dark:bg-gray-200 dark:text-gray-700 !important;
+}
+
+footer {
+  border-top-left-radius: 700px 150px;
+  border-top-right-radius: 700px 150px;
 }

@@ -18,18 +18,16 @@ const ThemeSwitch = ({ toggle = false }: { toggle?: boolean }) => {
     setTheme(theme === "light" ? "dark" : "light");
   };
 
-  return toggle ? (
-    <button onClick={toggleTheme} className="text-3xl">
+  return (
+    <button onClick={toggleTheme} className={toggle ? "text-3xl" : "rounded"}>
       {theme === "dark" ? (
-        <i className="bx bx-toggle-right" />
-      ) : (
+        toggle ? (
+          <i className="bx bx-toggle-right" />
+        ) : (
+          <FontAwesomeIcon icon={faSun} />
+        )
+      ) : toggle ? (
         <i className="bx bx-toggle-left" />
-      )}
-    </button>
-  ) : (
-    <button onClick={toggleTheme} className="rounded">
-      {theme === "dark" ? (
-        <FontAwesomeIcon icon={faSun} />
       ) : (
         <FontAwesomeIcon icon={faMoon} />
       )}

@@ -13,10 +13,11 @@ import Transactions from "../views/transactions/Transactions";
 import TopUp from "../views/transactions/TopUp";
 import OrdersIndex from "../views/orders/Index";
 import CancelOrder from "../views/orders/CancelOrder";
-import Category from "../views/Category";
-import Categories from "../views/Categories";
 import settingsRoutes from "./settings";
 import mealRoutes from "./meal";
+import categoriesRoutes from "./category";
+import restaurantRoutes from "./restaurant";
+import Checkout from "../views/Checkout";
 
 const router = createBrowserRouter([
   {
@@ -26,10 +27,6 @@ const router = createBrowserRouter([
       {
         Component: Home,
         index: true,
-      },
-      {
-        Component: Login,
-        path: "/login",
       },
     ],
   },
@@ -50,16 +47,12 @@ const router = createBrowserRouter([
         path: "/cart",
       },
       {
+        Component: Checkout,
+        path: "/checkout",
+      },
+      {
         Component: StaffIndex,
         path: "/staff",
-      },
-      {
-        Component: Categories,
-        path: "/categories",
-      },
-      {
-        Component: Category,
-        path: "/categories/:category",
       },
       {
         Component: OrdersIndex,
@@ -68,10 +61,6 @@ const router = createBrowserRouter([
       {
         Component: CancelOrder,
         path: "/orders/:id/cancel",
-      },
-      {
-        Component: Reviews,
-        path: "/items/:id/reviews",
       },
       {
         Component: TransactionIndex,
@@ -87,6 +76,8 @@ const router = createBrowserRouter([
       },
       ...mealRoutes,
       ...settingsRoutes,
+      ...categoriesRoutes,
+      ...restaurantRoutes,
     ],
   },
 ]);

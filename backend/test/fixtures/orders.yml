@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  meal: one
+  user: one
+  quantity: 1
+  address: one
+  status: MyString
+
+two:
+  meal: two
+  user: two
+  quantity: 1
+  address: two
+  status: MyString
