@@ -9,6 +9,7 @@ const {
   info,
   discounted,
   recommended,
+  favourites,
 } = restaurantThunks;
 
 interface InitialState {
@@ -33,6 +34,11 @@ interface InitialState {
     error: string | null;
   };
   recommended: {
+    isLoading: "idle" | "pending" | "failed";
+    data: RestaurantInterface[] | [];
+    error: string | null;
+  };
+  favourites: {
     isLoading: "idle" | "pending" | "failed";
     data: RestaurantInterface[] | [];
     error: string | null;
@@ -83,6 +89,11 @@ const initialState: InitialState = {
     error: null,
   },
   recommended: {
+    isLoading: "idle",
+    data: [],
+    error: null,
+  },
+  favourites: {
     isLoading: "idle",
     data: [],
     error: null,
@@ -192,6 +203,23 @@ const restaurants = createSlice({
     builder.addCase(recommended.rejected, (state, action) => {
       state.recommended.isLoading = "failed";
       state.recommended.error = action.error.message as string;
+    });
+
+    /******************************* FAVOURITE RESTAURANTS ********************************/
+    builder.addCase(favourites.pending, (state) => {
+      state.favourites.isLoading = "pending";
+      state.favourites.error = null;
+    });
+    builder.addCase(
+      favourites.fulfilled,
+      (state, action: PayloadAction<AxiosResponse<RestaurantInterface[]>>) => {
+        state.favourites.isLoading = "idle";
+        state.favourites.data = action.payload.data;
+      }
+    );
+    builder.addCase(favourites.rejected, (state, action) => {
+      state.favourites.isLoading = "failed";
+      state.favourites.error = action.error.message as string;
     });
   },
 });

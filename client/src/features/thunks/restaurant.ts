@@ -23,6 +23,10 @@ const restaurantThunks = {
     const url = `${ROOT_URL}/restaurants/recommended`;
     return getRequest(url);
   }),
+  favourites: createAsyncThunk("FAVOURITE_RESTAURANTS", async () => {
+    const url = `${ROOT_URL}/restaurants/favourites`;
+    return getRequest(url);
+  }),
 };
 
 export default restaurantThunks;

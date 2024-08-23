@@ -19,16 +19,6 @@ const Create = () => {
     },
   });
 
-  const categoryForm = useFormik({
-    initialValues: {
-      name: "",
-      image: null,
-    },
-    onSubmit(values, formikHelpers) {
-      console.log(values);
-    },
-  });
-
   const { pathname } = useLocation();
   return (
     <div>
