@@ -1,5 +1,3 @@
-import React from "react";
-
 const FoodCard = () => {
   return (
     <div className="sm:absolute sm:-left-40 sm:top-1/2 sm:transform sm:-translate-y-1/2 grid scale-50 sm:scale-100">

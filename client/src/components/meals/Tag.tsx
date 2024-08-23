@@ -1,4 +1,4 @@
-const Tag = ({ name, quantity }: { name: string; quantity?: string }) => {
+const Tag = ({ name }: { name: string; quantity?: string }) => {
   return (
     <div className="rounded-full px-2 py-0.5 border border-green-600 flex items-center gap-3">
       <p>{name}</p>

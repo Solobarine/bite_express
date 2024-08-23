@@ -1,5 +1,3 @@
-import React from "react";
-
 const MealCard = () => {
   return (
     <div className="p-2 rounded-lg grid gap-2">
