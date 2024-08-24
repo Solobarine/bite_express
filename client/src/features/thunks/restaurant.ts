@@ -24,6 +24,7 @@ const restaurantThunks = {
     return getRequest(url);
   }),
   favourites: createAsyncThunk("FAVOURITE_RESTAURANTS", async () => {
+    console.log(localStorage.getItem("auth_token"));
     const url = `${ROOT_URL}/restaurants/favourites`;
     return getRequest(url);
   }),

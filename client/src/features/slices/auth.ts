@@ -174,6 +174,7 @@ const auth = createSlice({
       }
     );
     builder.addCase(currentUser.rejected, (state, action) => {
+      console.log(action);
       state.user.currentUser.isLoading = "failed";
       state.user.currentUser.error = action.error.message as string;
     });
