@@ -3,7 +3,7 @@ import { CategoryInterface } from "../../types/category";
 import categoryThunks from "../thunks/category";
 import { AxiosResponse } from "axios";
 
-const { create, get, categories, update, destroy } = categoryThunks;
+const { create, get, sample, categories, update, destroy } = categoryThunks;
 
 interface InitialState {
   category: {
@@ -12,6 +12,11 @@ interface InitialState {
     error: string | null;
   };
   categories: {
+    isLoading: "idle" | "pending" | "failed";
+    data: CategoryInterface[] | [];
+    error: string | null;
+  };
+  sample: {
     isLoading: "idle" | "pending" | "failed";
     data: CategoryInterface[] | [];
     error: string | null;
@@ -40,6 +45,11 @@ const initialState: InitialState = {
     error: null,
   },
   categories: {
+    isLoading: "idle",
+    data: [],
+    error: null,
+  },
+  sample: {
     isLoading: "idle",
     data: [],
     error: null,
@@ -95,6 +105,21 @@ const category = createSlice({
     builder.addCase(categories.rejected, (state, action) => {
       state.categories.isLoading = "failed";
       state.categories.error = action.error.message as string;
+    });
+    builder.addCase(sample.pending, (state) => {
+      state.sample.isLoading = "pending";
+      state.sample.error = null;
+    });
+    builder.addCase(
+      sample.fulfilled,
+      (state, action: PayloadAction<AxiosResponse<CategoryInterface[]>>) => {
+        state.sample.isLoading = "idle";
+        state.sample.data = action.payload.data;
+      }
+    );
+    builder.addCase(sample.rejected, (state, action) => {
+      state.sample.isLoading = "failed";
+      state.sample.error = action.error.message as string;
     });
 
     builder.addCase(create.pending, (state) => {

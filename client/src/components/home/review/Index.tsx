@@ -7,7 +7,7 @@ import { faStar as faStarRegular } from "@fortawesome/free-regular-svg-icons";
 const Index = () => {
   const [active, setActive] = useState(0);
   return (
-    <div>
+    <div className="pb-20">
       <div className="flex items-center flex-wrap gap-3 justify-center p-4">
         {reviews.map(({ image, firstName, lastName }, index) => (
           <div
@@ -27,7 +27,7 @@ const Index = () => {
           </div>
         ))}
       </div>
-      <div className="h-full max-h-52 rounded-tl-3xl rounded-r-3xl bg-green-700 w-full max-w-lg mx-auto text-white text-xl">
+      <div className="h-full max-h-72 rounded-tl-3xl rounded-r-3xl bg-green-700 w-full max-w-4xl mx-auto text-white text-xl">
         {reviews
           .filter((__, index) => index === active)
           .map(({ review, firstName, lastName, rating }, index) => (

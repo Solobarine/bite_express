@@ -24,6 +24,10 @@ const categoryThunks = {
     const url = `${ROOT_URL}/categories`;
     return getRequest(url);
   }),
+  sample: createAsyncThunk("SAMPLE_CATEGORIES", async () => {
+    const url = `${ROOT_URL}/categories/sample`;
+    return getRequest(url);
+  }),
   update: createAsyncThunk(
     "UPDATE_CATEGORY",
     async (payload: Partial<CategoryInterface>) => {

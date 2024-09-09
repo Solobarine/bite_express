@@ -249,3 +249,5 @@ export const bestDishes = [
     image: "/fav_meals/salad.jpg",
   },
 ];
+
+export const abilities = [{}];
