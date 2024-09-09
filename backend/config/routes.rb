@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :orders
+  get '/categories/sample', to: 'categories#sample_categories'
   resources :categories, only: %i[index create show update delete]
   namespace :restaurant do
     post 'registration/create'

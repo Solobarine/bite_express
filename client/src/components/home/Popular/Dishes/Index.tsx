@@ -23,13 +23,13 @@ const Index = () => {
   };
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 items-center">
-      <div className="max-w-md mx-auto">
+      <div className="max-w-60 mx-auto">
         <img
           src={meal.image}
           alt={meal.dish}
-          className="w-full aspect-square rounded-full bg-gray-300 object-conver"
+          className="w-full aspect-square rounded-xl bg-gray-300 object-conver"
         />
-        <p className="text-2xl font-semibold text-center">{meal.dish}</p>
+        <p className="text-2xl font-semibold text-center mt-2">{meal.dish}</p>
       </div>
       <div className="p-2">
         <div className="grid gap-4">
