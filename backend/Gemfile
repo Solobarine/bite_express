@@ -29,6 +29,8 @@ gem 'jbuilder'
 # Enable CORS
 gem 'rack-cors'
 
+gem 'cloudinary'
+
 # Enable Search
 gem 'pg_search'
 
