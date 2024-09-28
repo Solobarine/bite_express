@@ -1,13 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Home from "../views/Home";
-import Login from "../views/auth/Login";
 import Main from "../layouts/Main";
 import Dashboard from "../views/Dashboard";
 import StaffIndex from "../views/staff/Index";
 import Notifications from "../views/Notifications";
 import Cart from "../views/Cart";
-import Reviews from "../views/Reviews";
 import TransactionIndex from "../views/transactions/Index";
 import Transactions from "../views/transactions/Transactions";
 import TopUp from "../views/transactions/TopUp";

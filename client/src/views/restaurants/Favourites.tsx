@@ -2,8 +2,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CardTwo from "../../components/meals/CardTwo";
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../../features/store";
+import MidLoading from "../MidLoading";
+import Error from "../Error";
 
 const Favourites = () => {
+  const { isLoading, data } = useSelector(
+    (state: RootState) => state.restaurant.favourites
+  );
   const navigate = useNavigate();
   return (
     <div className="grid p-2 gap-3">
@@ -13,11 +20,17 @@ const Favourites = () => {
         </button>
         <h3 className="text-xl font-semibold">My Favourite Restaurants</h3>
       </div>
-      <div className="mt-5 grid gap-3 sm:grid-cols-2">
-        {[1, 2, 3, 4, 5, 6, 7, 8].map((_, index) => (
-          <CardTwo key={index} />
-        ))}
-      </div>
+      {isLoading === "pending" ? (
+        <MidLoading />
+      ) : isLoading === "failed" ? (
+        <Error />
+      ) : (
+        <div className="mt-5 grid gap-3 sm:grid-cols-2">
+          {data.map((restaurant, index) => (
+            <CardTwo key={index} data={restaurant} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };

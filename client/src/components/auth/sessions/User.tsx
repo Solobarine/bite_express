@@ -32,7 +32,8 @@ const User = () => {
       },
     });
 
-  if (isLoggedIn) return <Navigate to="/dashboard" />;
+  if (isLoggedIn && localStorage.getItem("auth_token"))
+    return <Navigate to="/dashboard" />;
 
   return (
     <>

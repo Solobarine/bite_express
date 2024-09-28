@@ -3,7 +3,7 @@ import { ReviewInterface, ReviewsDataInterface } from "../../types/review";
 import reviewThunks from "../thunks/review";
 import { AxiosResponse } from "axios";
 
-const { getReview, getReviews, create, update, delete: destroy } = reviewThunks;
+const { getReviews, create } = reviewThunks;
 
 interface InitialState {
   reviews: {
@@ -107,6 +107,10 @@ const review = createSlice({
         state.reviews.data.reviews = reviews;
       }
     );
+    builder.addCase(create.rejected, (state) => {
+      state.create.isLoading = "failed";
+      state.create.error = "An error Occurred";
+    });
   },
 });
 

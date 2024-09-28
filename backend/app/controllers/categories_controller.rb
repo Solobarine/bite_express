@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[update destroy]
-  before_action :authenticate, except: %i[index show]
+  before_action :authenticate, except: %i[index sample_categories show]
 
   def index
     @categories = Category.all
@@ -43,6 +43,18 @@ class CategoriesController < ApplicationController
     end
 
     render json: { id: @category.id, name: @category.name, restaurants: }, status: :ok
+  end
+
+  def sample_categories
+    @categories = Category.where('id >= ?', rand(Category.first.id..Category.last.id)).limit(4)
+
+    render json: @categories.map { |cat|
+      {
+        id: cat.id,
+        name: cat.name,
+        image: cat.imageUrl
+      }
+    }
   end
 
   def update

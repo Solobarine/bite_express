@@ -1,5 +1,3 @@
-import React from "react";
-
 const Card = ({
   item,
   index,
@@ -27,9 +25,9 @@ const Card = ({
       />
       <div className="grid gap-3 dark:text-gray-100">
         <span className="flex items-center justify-between gap-2">
-          <h3 className="text-xl font-semibold">{item.dish}</h3>
+          <h3 className="text-lg font-semibold">{item.dish}</h3>
           <button
-            className={`px-3 py-1 rounded-tl-xl rounded-br-xl text-nowrap ${
+            className={`px-3 py-1 text-sm rounded-tl-xl rounded-br-xl text-nowrap ${
               active === index
                 ? "bg-orange-200 text-orange-700"
                 : "text-white bg-orange-700"

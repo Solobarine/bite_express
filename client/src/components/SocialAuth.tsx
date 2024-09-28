@@ -1,10 +1,3 @@
-import {
-  faFacebookF,
-  faGoogle,
-  faLinkedinIn,
-} from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 const SocialAuth = () => {
   return (
     <div className="grid gap-3 p-3">

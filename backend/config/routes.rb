@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :orders
+  get '/categories/sample', to: 'categories#sample_categories'
   resources :categories, only: %i[index create show update delete]
   namespace :restaurant do
     post 'registration/create'
@@ -7,7 +8,6 @@ Rails.application.routes.draw do
     post 'session/create'
     delete 'session/destroy'
   end
-  root to: 'home#index'
 
   namespace :auth do
     post 'registration/create'
